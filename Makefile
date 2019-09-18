@@ -34,6 +34,7 @@ install-project: composer.json
 install-sf-project: composer.json
 	    $(COMPOSER) req symfony/form -a -o
 	    $(COMPOSER) require symfony/security -a -o
+	    $(COMPOSER) require symfony/security-bundle -a -o
 	    $(COMPOSER) req symfony/orm-pack -a -o
 	    $(COMPOSER) req ramsey/uuid-doctrine -a -o
 	    $(COMPOSER) req symfony/asset -a -o
