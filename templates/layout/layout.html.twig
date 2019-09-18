@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+
+    {% block stylesheet %}
+        <link href="https://fonts.googleapis.com/css?family=Assistant:200,300,400,600,700,800|Playfair+Display:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+        <link href="{{ asset('/assets/vendors/bootstrap.css') }}"  rel="stylesheet">
+        <link href="{{ asset('/assets/css/pub/style.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/assets/css/pub/products.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/assets/css/pub/formations.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/assets/css/pub/price.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/assets/css/mout-grid/mout-grid.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/assets/css/global/floating-label.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/pub/messages.css') }}" rel="stylesheet" />
+        <link href="{{ asset('assets/css/admin/administrator.css') }}" rel="stylesheet" />
+    {% endblock %}
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Si icone -->
+    {#<link rel="icon" type="image/ico" href="/images/ico-livre.ico" />#}
+    <!--[if IE]><link rel="shortcut icon" type="image/x-icon" href="images/velo-marqueur.png" /><!-->
+
+    {% block meta %}
+        <!-- Création des metatags réseaux sociaux -->
+        <!-- Metatags FB -->
+        <meta property="og:title" content="Mout Web Agency" />
+        <meta property="og:type" content="Mout Web Agency" />
+        <meta property="og:url" content="moutwebdesign.com" />
+        <meta property="og:description" content="Mout Web Agency" />
+        <meta property="og:image" content="{{ asset('assets/images/logo/bandeau-mout.png') }}" />
+
+        <!-- Metatag Twitter -->
+        <meta name="twitter:card" content="Mout Web Agency" />
+        <meta name="twitter:tittle" content="Mout Web Agency" />
+        <meta name="twitter:description" content="Mout Web Agency" />
+    {% endblock %}
+    <meta name="description" content="
+    {% block description %}
+        CSloisirsCréatifs - Réalisation de meubles en carton, abat-jour, encadrements. Des stages pour tout niveau, du débutant au confirmé de cet
+            art.
+    {% endblock %}
+        " />
+    <title>
+        {% block title %}
+            CSLoisirs
+        {% endblock %}
+    </title>
+</head>
+
+<body>
+
+{% block body %}
+{% block navigation %}
+    {% set route = app.request.get('_route') %}
+    {% set pathInfo = app.request.pathInfo %}
+
+<header>
+    <nav class="desktop-nav">
+        <ul class="nav">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle {% if pathInfo starts with '/cat' %}active{% endif %}" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Réalisations</a>
+                <div class="dropdown-menu">
+                    {% for nav in navigations %}
+                        <a class="dropdown-item {% if pathInfo starts with '/cat/' ~nav.slug %}active{% endif %}" href="{{ path('showPubCat', {'category': nav.slug}) }}">{{ nav.category }}</a>
+                    {% endfor %}
+                </div>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('formationsPubShow') }}" class="nav-link {% if pathInfo starts with '/stages' %}active{% endif %}">Stages</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('index') }}" class="nav-link"><img src="{{ asset('assets/images/logo.png') }}" alt="Logo CSLoisirs" class="img-fluid" id="logo"/></a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('showPricesAndFormations') }}" class="nav-link {% if pathInfo starts with '/prix-formations' %}active{% endif %}">Tarifs</a>
+            </li>
+            <li class="nav-item">
+                <a href="{{ path('receiveContact') }}" class="nav-link {% if pathInfo starts with '/contact' %}active{% endif %}">Contact</a>
+            </li>
+        </ul>
+    </nav>
+
+    <nav id="mobile-nav">
+        <div class="burger">
+            <span class="burger-line" id="top-line"></span>
+            <span class="burger-line" id="middle-line"></span>
+            <span class="burger-line" id="bot-line"></span>
+        </div>
+        <div class="nav-mobile-content">
+            <div class="logo-nav-mobile">
+                <img src="{{ asset('assets/images/logo.png') }}" class="img-fluid" alt="Logo CSLoisirsCréatifs" />
+            </div>
+            <ul class="nav-mobile-list-container">
+                <li class="nav-mobile-list">Réalisations</li>
+                {% for nav in navigations %}
+                    <li class="nav-mobile-list nav-mobile-submenu-list"><a href="{{ path('showPubCat', {'category': nav.slug}) }}" class="nav-mobile-submenu">{{ nav.category }}</a></li>
+                {% endfor %}
+                <li class="nav-mobile-list"><a href="{{ path('formationsPubShow') }}">Stages</a></li>
+                <li class="nav-mobile-list"><a href="{{ path('showPricesAndFormations') }}">Tarifs</a></li>
+                <li class="nav-mobile-list"><a href="{{ path('receiveContact') }}">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+
+{% endblock %}
+
+        <main>
+            <div class="container-fluid">
+                <div class="row no-gutters">
+                    <div class="col-12 header-container">
+                        <img src="{{ asset('assets/images/cathy-site-3.jpg') }}" alt="Boîte carton CSLoisirsCréatifs" class="img-fluid img-background" />
+                        <i class="fas fa-chevron-down fa-2x scroll-down-header"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+        {% block container %}
+
+        {% endblock %}
+            </div>
+        </main>
+
+        {% block footer %}
+        <footer>
+            <div class="container-fluid">
+                <p>© Cs Loisirs Creatifs - 535049498/00012</p>
+                <p>3 rue du Champ Hochet 28260 ANET - <a href="tel: +3368980684">06 08 98 06 84</a> - <a href="mailto:cathysonnet@wanadoo.fr">cathysonnet@wanadoo.fr</a></p>
+            </div>
+        </footer>
+    {% endblock %}
+    </div>
+
+{% block javascripts %}
+    <script src="{{ asset('/assets/vendors/jquery.js') }}"></script>
+    <script src="{{ asset('/assets/vendors/bootstrap.bundle.js') }}"></script>
+    <script src="{{ asset('/assets/vendors/bootstrap.js') }}"></script>
+    <script src="{{ asset('/assets/vendors/popper.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/global/sticky-nav.js') }}"></script>
+    <script src="{{ asset('/assets/js/global/mobile-nav.js') }}"></script>
+{% endblock %}
+</body>
+{% endblock %}
+</html>
