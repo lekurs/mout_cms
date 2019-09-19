@@ -163,8 +163,10 @@ class User implements UserInterface
         if ($this->roles == 'ROLE_ADMIN') {
             return 'Administrateur';
         } elseif ($this->roles == 'ROLE_USER ') {
+            return 'Utilisateur';
+        } elseif ($this->roles == 'ROLE_SUPER_USER') {
             return 'Contributeur';
-        } else {
+        } else{
             return $this->roles;
         }
     }

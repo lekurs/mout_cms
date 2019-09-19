@@ -11,7 +11,13 @@
             <div class="row no-gutters">
                 <div class="col-12 d-flex flex-row">
                     <H2>Utilisateurs</H2>
-                    <span><a href="#" class="btn btn-mout">Ajouter</a></span>
+                    <span><a href="{{path('addUserAdminAction')}}" class="btn btn-mout">Ajouter</a></span>
+                </div>
+                <div>
+                    <form action="" id="search-user" method="get">
+                        <input type="text" name="user-search" id="user-search" />
+                        <button type="submit" class="btn btn-mout"><i class="fas fa-search"></i></button>
+                    </form>
                 </div>
             </div>
             <div>
@@ -26,7 +32,7 @@
                     <tbody>
                     {% for user in users if users is not empty%}
                         <tr>
-                            <td>{{ user.username }}</td>
+                            <td><a href="#">{{ user.username }}</a></td>
                             <td>{{ user.name }}</td>
                             <td>{{ user.lastname }}</td>
                             <td>{{ user.email }}</td>

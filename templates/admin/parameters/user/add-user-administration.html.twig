@@ -1,0 +1,52 @@
+{% extends '/layout/admin-layout.html.twig' %}
+{% block stylesheet %}
+    {{ parent() }}
+    <link href="{{ asset('assets/css/admin/admin-users-styles.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block container %}
+    <section>
+        <div class="wrapper-grid-container">
+            <h1>Gestion des utilisateurs</h1>
+            <div class="form-containter">
+                {{ form_start(form) }}
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.username) }}
+                    {{ form_label(form.username) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.password) }}
+                    {{ form_label(form.password) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.role) }}
+                    {{ form_label(form.role) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.email) }}
+                    {{ form_label(form.email) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.online) }}
+                    {{ form_label(form.online) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.name) }}
+                    {{ form_label(form.name) }}
+                </div>
+
+                <div class="floating-label" style="margin: 2em 0">
+                    {{ form_widget(form.lastname) }}
+                    {{ form_label(form.lastname) }}
+                </div>
+                <button type="submit" class="btn btn-mout">Ajouter</button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </section>
+{% endblock %}
