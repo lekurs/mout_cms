@@ -1,0 +1,22 @@
+/** STYLES ADMIN EN SCSS**/
+/** FONTS**/
+$AristaProFatFont: "AristaProAlternateFat";
+
+/** COLOR **/
+$primary-color: #ffec00;
+$black-color: #000;
+
+.btn-mout {
+  color: $black-color;
+  background: $primary-color;
+  border: 1px solid $primary-color;
+  text-transform: uppercase;
+  font-family: $AristaProFatFont;
+
+    &:hover {
+      color: $primary-color;
+      background: $black-color;
+      border: 1px solid $primary-color;
+    }
+
+}

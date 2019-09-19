@@ -1,0 +1,17 @@
+/** STYLES ADMIN EN SCSS**/
+/** FONTS**/
+/** COLOR **/
+.btn-mout {
+  color: #000;
+  background: #ffec00;
+  border: 1px solid #ffec00;
+  text-transform: uppercase;
+  font-family: "AristaProAlternateFat";
+}
+.btn-mout:hover {
+  color: #ffec00;
+  background: #000;
+  border: 1px solid #ffec00;
+}
+
+/*# sourceMappingURL=admin-layout-style.css.map */

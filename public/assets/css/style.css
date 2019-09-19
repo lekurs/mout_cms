@@ -1,6 +1,5 @@
-body p {
-  font: 100% Helvetica, sans-serif;
-  color: red;
+.grid-container {
+  display: grid;
 }
 
 /*# sourceMappingURL=style.css.map */

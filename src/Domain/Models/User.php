@@ -31,7 +31,13 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\Column(type="string", length=150, nullable=false, unique=false)
+     * @var string
+     * @ORM\Column(type="string", length=200, nullable=true, unique=false)
+     */
+    private $name;
+
+    /**
+     * @ORM\Column(type="string", length=150, nullable=true, unique=false)
      */
     private $lastName;
 
@@ -65,34 +71,48 @@ class User implements UserInterface
     private $slug;
 
     /**
+     * @var \DateTime
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $userRegistered;
+
+    /**
      * User constructor.
+     *
      * @param string $username
-     * @param string $lastName
      * @param string $password
      * @param callable $encoder
-     * @param array $roles
+     * @param $roles
      * @param string $email
      * @param bool $online
      * @param string $slug
+     * @param \DateTime $userRegistered
+     * @param string|null $name
+     * @param string|null $lastName
+     * @throws \Exception
      */
     public function __construct(
-        string $username,
-        string $lastName,
+        string $username, //login
         string $password,
         callable $encoder,
         $roles,
         string $email,
         bool $online,
-        string $slug
+        string $slug,
+        \DateTime $userRegistered,
+        string $name = null,
+        string $lastName = null
     ) {
         $this->username = $username;
-        $this->lastName = $lastName;
         $this->password = $password;
         $this->password = $encoder($password, null);
         $this->roles = $roles;
         $this->email = $email;
         $this->online = $online;
         $this->slug = $slug;
+        $this->userRegistered = new \DateTime();
+        $this->name = $name;
+        $this->lastName = $lastName;
     }
 
     /**
@@ -106,7 +126,15 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function getUsername(): string
+    public function getName(): ? string
+    {
+        return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUsername(): ? string
     {
         return $this->username;
     }
@@ -132,7 +160,13 @@ class User implements UserInterface
      */
     public function getRoles(): string
     {
-        return $this->roles;
+        if ($this->roles == 'ROLE_ADMIN') {
+            return 'Administrateur';
+        } elseif ($this->roles == 'ROLE_USER ') {
+            return 'Contributeur';
+        } else {
+            return $this->roles;
+        }
     }
 
     /**

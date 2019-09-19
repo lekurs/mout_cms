@@ -11,19 +11,19 @@ label.float {
     color: #ffec00 !important;
 }
 
-.btn-mout {
-    color: #000;
-    background: #ffec00;
-    border: 1px solid #ffec00;
-    text-transform: uppercase;
-    font-family: "AristaProAlternateFat";
-}
+/*.btn-mout {*/
+/*    color: #000;*/
+/*    background: #ffec00;*/
+/*    border: 1px solid #ffec00;*/
+/*    text-transform: uppercase;*/
+/*    font-family: "AristaProAlternateFat";*/
+/*}*/
 
-.btn-mout:hover {
-    color: #ffec00;
-    background: #000000;
-    border: 1px solid #ffec00;
-}
+/*.btn-mout:hover {*/
+/*    color: #ffec00;*/
+/*    background: #000000;*/
+/*    border: 1px solid #ffec00;*/
+/*}*/
 
 section {
     margin-bottom: 3em;

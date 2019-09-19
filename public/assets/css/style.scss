@@ -1,7 +1,39 @@
 $font-stack:    Helvetica, sans-serif;
-$primary-color: red;
+//$primary-color: red;
+//$secondary-color: green;
 
-body p {
-  font: 100% $font-stack;
-  color: $primary-color;
+$mobile-size: 375px;
+$tablette-size: 768px;
+$laptop-size: 1024px;
+$desktop-size: 1200px;
+$xl-desktop-size: 1400px;
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  &.left-0 {
+    left: 0;
+  }
+  &.top-0 {
+    top: 0;
+  }
+}
+
+/** GRILLE MOUT **/
+
+/** /GRILLE MOUT **/
+
+.grid-container {
+display: grid;
+
+  &.two_column {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.three_column {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }

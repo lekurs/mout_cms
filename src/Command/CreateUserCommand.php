@@ -57,8 +57,10 @@ class CreateUserCommand extends Command
             ->setDescription('Création d\'un utilisateur admin')
             ->setHelp('Cette commande est utilisée pour créer un nouvel admnistrateur')
             ->addArgument('username', InputArgument::REQUIRED, 'Login')
-            ->addArgument('email', InputArgument::REQUIRED, 'email')
-            ->addArgument('password', InputArgument::REQUIRED, 'password');
+            ->addArgument('email', InputArgument::REQUIRED, 'Email')
+            ->addArgument('password', InputArgument::REQUIRED, 'Mot de passe')
+            ->addArgument('name', InputArgument::OPTIONAL, 'Nom')
+            ->addArgument('lastname', InputArgument::OPTIONAL, 'Prénom');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -69,13 +71,14 @@ class CreateUserCommand extends Command
 
         $user = new User(
             $input->getArgument('username'),
-            $input->getArgument('username'),
             $input->getArgument('password'),
             $callable,
             'ROLE_ADMIN',
             $input->getArgument('email'),
             true,
-            $this->slugHelper->replace($input->getArgument('username'))
+            $this->slugHelper->replace($input->getArgument('username')),
+            $input->getArgument('name'),
+            $input->getArgument('lastname')
         );
 
         $this->userRepository->save($user);

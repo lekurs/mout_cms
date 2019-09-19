@@ -16,6 +16,15 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
         parent::__construct($registry, User::class);
     }
 
+    public function getAllByRole(): array
+    {
+        return $this->createQueryBuilder('user')
+                                ->orderBy('user.roles', 'ASC')
+                                ->addOrderBy('user.username', 'ASC')
+                                ->getQuery()
+                                ->getResult();
+    }
+
     public function save(User $user): void
     {
         $this->_em->persist($user);

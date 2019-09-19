@@ -1,0 +1,41 @@
+{% extends '/layout/admin-layout.html.twig' %}
+{% block stylesheet %}
+{{ parent() }}
+<link href="{{ asset('assets/css/admin/admin-users-styles.css') }}" rel="stylesheet" />
+{% endblock %}
+
+{% block container %}
+    <section>
+        <div class="wrapper-grid-container">
+            <h1>Gestion des utilisateurs</h1>
+            <div class="row no-gutters">
+                <div class="col-12 d-flex flex-row">
+                    <H2>Utilisateurs</H2>
+                    <span><a href="#" class="btn btn-mout">Ajouter</a></span>
+                </div>
+            </div>
+            <div>
+                <table class="table table-hover">
+                    <thead>
+                    <th>Username</th>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Mail</th>
+                    <th>Droits</th>
+                    </thead>
+                    <tbody>
+                    {% for user in users if users is not empty%}
+                        <tr>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.name }}</td>
+                            <td>{{ user.lastname }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.roles }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+{% endblock %}

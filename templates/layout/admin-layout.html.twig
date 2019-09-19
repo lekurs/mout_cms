@@ -11,6 +11,7 @@
         <link href="{{ asset('/vendors/bootstrap.css') }}"  rel="stylesheet">
         <link href="{{ asset('/assets/css/style.css') }}"  rel="stylesheet">
         <link href="{{ asset('/vendors/mout/css/admin-layout.css') }}" rel="stylesheet" />
+        <link href="{{ asset('/vendors/mout/css/admin-layout-style.css') }}" rel="stylesheet" />
         <link href="{{ asset('/vendors/mout/css/floating-label.css') }}" rel="stylesheet" />
         <link href="{{ asset('/vendors/mout/css/overwrite-bootstrap.css') }}" rel="stylesheet" />
         <link href="{{ asset('/vendors/mout/css/admin-nav.css') }}" rel="stylesheet" />
@@ -133,7 +134,7 @@
                                 </a>
                             </li>
                             <li class="item-submenu">
-                                <a href="#" class="subnav-item-link">
+                                <a href="{{ path('adminUserShow') }}" class="subnav-item-link">
                                     <span class="logo-item-menu"><i class="far fa-map"></i></span>
                                     <span class="menu-link">Utilisateurs</span>
                                 </a>
@@ -146,9 +147,11 @@
     </div>
 
         <div class="admin-grid-container">
+            <div class="container">
         {% block container %}
 
         {% endblock %}
+        </div>
         <div class="admin-footer">Application réalisée par MOUT</div>
     </div>
 {% endblock %}

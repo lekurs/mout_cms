@@ -15,6 +15,7 @@ final class UserFactory implements UserFactoryInterface
 
     /**
      * UserFactory constructor.
+     *
      * @param $encoderFactory
      */
     public function __construct(EncoderFactoryInterface $encoderFactory)
@@ -22,10 +23,30 @@ final class UserFactory implements UserFactoryInterface
         $this->encoderFactory = $encoderFactory;
     }
 
-    public function create(string $username, string $lastName, string $password, string $roles, string $email, bool $online, string $slug): User
-    {
+    public function create(
+        string $username,
+        string $password,
+        string $roles,
+        string $email,
+        bool $online,
+        string $slug,
+        \DateTime $userRegistered,
+        string $name = null,
+        string $lastName = null
+    ): User {
         $encoder = $this->encoderFactory->getEncoder(User::class);
 
-        return new User($username, $lastName, $password, \Closure::fromCallable([$encoder, 'encodePassword']), $roles, $email, $online, $slug);
+        return new User(
+            $username,
+            $password,
+            \Closure::fromCallable([$encoder, 'encodePassword']),
+            $roles,
+            $email,
+            $online,
+            $slug,
+            new \DateTime(),
+            $name = null,
+            $lastName = null
+        );
     }
 }
