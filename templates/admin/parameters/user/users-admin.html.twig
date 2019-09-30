@@ -32,7 +32,7 @@
                     <tbody>
                     {% for user in users if users is not empty%}
                         <tr>
-                            <td><a href="#">{{ user.username }}</a></td>
+                            <td><a href="{{ path('editUserAdmin', {'slug' : user.slug }) }}">{{ user.username }}</a></td>
                             <td>{{ user.name }}</td>
                             <td>{{ user.lastname }}</td>
                             <td>{{ user.email }}</td>

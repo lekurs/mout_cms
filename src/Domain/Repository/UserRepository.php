@@ -25,6 +25,15 @@ class UserRepository extends ServiceEntityRepository implements UserRepositoryIn
                                 ->getResult();
     }
 
+    public function getOneBySlug(string $slug): User
+    {
+        return $this->createQueryBuilder('user')
+                                ->where('user.slug = :slug')
+                                ->setParameter('slug', $slug)
+                                ->getQuery()
+                                ->getOneOrNullResult();
+    }
+
     public function save(User $user): void
     {
         $this->_em->persist($user);

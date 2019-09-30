@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\UI\Responder\Admin\Administration\Users;
+namespace App\UI\Responder\Admin\Parameters\User;
 
 
 use App\UI\Responder\Interfaces\AddNewUserResponderInterface;

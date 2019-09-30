@@ -1,7 +1,7 @@
 <?php
 
 
-namespace App\UI\Action\Admin\Administration\Users;
+namespace App\UI\Action\Admin\Parameters\User;
 
 
 use App\Domain\Form\Admin\Users\AddNewUserForm;
@@ -16,9 +16,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class AddNewUserAction
+ *
  * @Route(name="addUserAdminAction", path="/admin/utilisateur/add")
  */
-class AddNewUserAction implements AddNewUserActionInterface
+final class AddNewUserAction implements AddNewUserActionInterface
 {
     private $userRepository;
 

@@ -44,7 +44,7 @@ section {
     width: 96%;
     margin: 2em auto 0;
     display: grid;
-    grid-template-rows: 100px auto;
+    grid-template-rows: 70px auto;
 }
 
 .admin-footer {

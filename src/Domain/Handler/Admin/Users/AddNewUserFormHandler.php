@@ -70,8 +70,6 @@ class AddNewUserFormHandler implements AddNewUserFormHandlerInterfaces
             return  true;
         }
 
-        $this->session->getFlashBag()->add('error', 'Erreur lors de l\'ajout de l\'utilisateur');
-
         return false;
     }
 }
